@@ -112,7 +112,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 TEMPLATE_DIRS = (
-    "/Users/darylchang/djangoDir/templatesDir/classifieds",
+    "/Users/darylchang/djangoDir/classifieds/templates",
 )
 
 INSTALLED_APPS = (
@@ -158,6 +158,5 @@ LOGGING = {
     }
 }
 
-# Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()

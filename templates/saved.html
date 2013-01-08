@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "bootstrap.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "title.css" %}" />
+<style>
+.ad {padding: 10px;
+	 border-bottom: 1px solid gray;}
+h2 {border-bottom: 1px solid gray;}
+</style>
+</head>
+<body>
+<div id="main">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container">
+					<div id="banner">
+						<a href="/"><img src="{% static "seal.gif"%}" alt="seal" id="seal"/></a>
+						<h1>Stanford Classifieds</h1>
+						<ul class="nav">
+							<li><a href="/">Home</a></li>
+							<li><a href="/bikes">Bikes</a></li>
+							<li><a href="/textbooks">Textbooks</a></li>
+							<li><a href="/post">Post Ad</a></li>
+							<li><a href="/saved">Saved</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+	<h2>Saved Ads</h2>
+	{% if saved_ads %}
+ 		{% for entry in saved_ads %}
+    			<div class="ad"> <a href="/entry/{{entry.id}}/">{{entry.title}}</a>
+    				<br />Date posted: {{entry.date}}
+					<br />Description: {{entry.description}}
+					<br />Price: {{entry.price}}
+				</div>
+		    {% endfor %}
+		    
+			{% else %}
+		    <p>No results are available.</p>
+		{% endif %}
+	</div>
+</div>
+<script>
+	/*window.onload = wrapper; 
+	
+	function wrapper() {
+		console.log("OUT");
+		var numArr = JSON.parse(localStorage.getItem("savedArr"));
+		console.log(numArr);
+		for (i=0; i<numArr.length; i++) {
+			generateAd(numArr[i]);
+		}
+	}
+
+	function generateAd(index){
+		var adObj = JSON.parse(localStorage.getItem(index));
+		var htmlText = "";
+		htmlText += "<div class=\"ad\" id=\"" + index + "\">Title: " + adObj.titleText;
+		htmlText += "<br />Date posted: " + adObj.date;
+		htmlText += "<br />Description: " + adObj.description;
+		htmlText += "<br />Price: $" + adObj.price;
+		htmlText += "</div>";
+		document.getElementById("content").innerHTML += htmlText;
+	}*/
+
+</script>
+</body>
+</html>

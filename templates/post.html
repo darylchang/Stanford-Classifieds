@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "bootstrap.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "title.css" %}" />
+<style>
+#inputs {float:left;}
+</style>
+</head>
+<body>
+<div id="main">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container">
+					<div id="banner">
+						<a href="/"><img src="{% static "seal.gif" %}" alt="seal" id="seal"/></a>
+						<h1>Stanford Classifieds</h1>
+						<ul class="nav">
+							<li><a href="/">Home</a></li>
+							<li><a href="/bikes">Bikes</a></li>
+							<li><a href="/textbooks">Textbooks</a></li>
+							<li><a href="/post">Post Ad</a></li>
+							<li><a href="/saved">Saved</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+		<h2>Post Ad</h2>
+		<form id="inputs" action="/posted/" method="post" >
+			{% csrf_token %}
+			*Type 
+			<select name="type" name = "type" id="type">
+				<option>Bike</option>
+				<option>Textbook</option>
+			</select>
+		
+			<div>*Title <input type="text" name="title"id="titleText"/></div>
+		
+			<div>*Description (include contact info)<br /> <textarea rows="10" cols="20" name = "description"id="description"></textarea></div><br />
+			
+			<div>*Price <input type="text" name = "price" id="price" value="No $ signs" onclick="clearPrice();"/></div>
+
+			*Date: <input type="date" name = "date" id="date" onclick="clearDate();"/><br />
+			
+			Image URL: <input type="text" name = "image" id="image"/><br />
+			
+			<input type="submit" class="btn" value="Submit Ad"> 
+
+			<input type="button" class="btn" value="Clear all" onclick="clearAll();">
+		</form>
+	</div>
+</div>
+<script>
+function clearAll() {
+	clearDate();
+	clearPrice();
+	document.getElementById("titleText").value="";
+	document.getElementById("description").value="";
+	document.getElementById("image").value="";
+}
+
+function clearDate() {
+	document.getElementById("date").value="";
+}
+
+function clearPrice() {
+	document.getElementById("price").value="";
+}
+
+function submit() {
+	var adObj = new Object();
+	adObj.type = document.getElementById("type").value;
+	adObj.titleText = document.getElementById("titleText").value;
+	adObj.description = document.getElementById("description").value;
+	adObj.price = document.getElementById("price").value;
+	adObj.date = document.getElementById("date").value;
+	adObj.image = document.getElementById("image").value;
+	
+	if (adObj.titleText && adObj.description && adObj.price && adObj.date) {
+		var type = document.getElementById("type").value;
+		if (type == "Bike") {
+			var bikeInd = localStorage.getItem('bikeInd');
+			if (!bikeInd) {
+				localStorage.setItem('bikeInd', 101);
+				localStorage.setItem('101', JSON.stringify(adObj));
+			} else {
+				localStorage.setItem('bikeInd', parseInt(bikeInd)+1);
+				localStorage.setItem(parseInt(bikeInd)+1, JSON.stringify(adObj));
+			}
+			alert("Thank you for submitting your ad.  You will now be redirected to the bikes page.");
+			window.location = "bikes.html";
+		} else if (type == "Textbook") {
+			var textInd = localStorage.getItem('textInd');
+			if (!textInd) {
+				localStorage.setItem('textInd', 1);
+				localStorage.setItem('1', JSON.stringify(adObj));
+			} else {
+				localStorage.setItem('textInd', parseInt(textInd)+1);
+				localStorage.setItem(parseInt(textInd)+1, JSON.stringify(adObj));
+			}
+			alert("Thank you for submitting your ad.  You will now be redirected to the textbooks page.");
+			window.location = "textbooks.html";
+		}
+	} else {
+		alert("Please enter all required information.");
+	}
+}
+</script>
+</body>
+</html>

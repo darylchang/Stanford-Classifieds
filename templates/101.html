@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="title.css" />
+<style>
+#ad {clear: both;
+	 margin: 20px;}
+#titleText {font-weight: bold}
+</style>
+</head>
+<body>
+<div id="main">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container">
+					<div id="banner">
+						<a href="home.html"><img src="seal.gif" alt="seal" id="seal"/></a>
+						<h1>Stanford Classifieds</h1>
+						<ul class="nav">
+							<li><a href="home.html">Home</a></li>
+							<li><a href="bikes.html">Bikes</a></li>
+							<li><a href="textbooks.html">Textbooks</a></li>
+							<li><a href="post.html">Post Ad</a></li>
+							<li><a href="saved.html">Saved</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+		<h2>Bike Ad</h2>
+		<div id="titleText">Title: </div>
+		<div id="description">Description: </div><br />
+		<div id="price">Price: $</div>
+		<div id="date">Date posted: </div><br />
+		<div id="image"></div>
+		Image from http://www.gondolajoe.com/wp-content/uploads/2009/10/gondola-bike-001-300x225.jpg
+		<br /><button class="btn" onclick="saveAd();"> Save Ad  </button>
+		<button class="btn" onclick="back();"> Back </button>
+	</div>
+</div>
+<script>
+	var num = 101;
+	window.onload = function (){
+		var adObj = JSON.parse(localStorage.getItem(num));
+		document.getElementById("titleText").innerHTML += adObj.titleText;
+		document.getElementById("description").innerHTML += adObj.description;
+		document.getElementById("price").innerHTML += adObj.price;
+		document.getElementById("date").innerHTML += adObj.date;
+		if (adObj.image != "")
+			document.getElementById("image").innerHTML += "<img src=\"" + adObj.image + "\" alt=\"image\"/>";
+	}
+	
+	function back() {
+		window.location = "bikes.html";
+	}
+	
+	function saveAd() {
+		var savedArr = JSON.parse(localStorage.getItem("savedArr"));
+		if (!savedArr) {
+			var newArr = new Array();
+			newArr[0] = num;
+			localStorage.setItem('savedArr', JSON.stringify(newArr));
+		} else if (savedArr.indexOf(num) == -1){
+			savedArr.push(num);
+			localStorage.setItem('savedArr', JSON.stringify(savedArr));
+		}
+	}
+</script>
+</body>
+</html>

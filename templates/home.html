@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Stanford Classifieds</title>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "bootstrap.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "title.css" %}" />
+<style>
+.slide1 {height: 400px;
+		width: 535px;
+		border: 5px inset DarkRed;
+		margin-bottom: 10px;
+		text-align: center;
+		position: relative;
+		left: 150px;
+		}
+#content {text-align: center;}
+#welcome {position: relative;
+		  left: 50px;}
+#credit {position: relative;
+		 top: 425px;
+		 left: 25px;}
+</style>
+</head>
+<body>
+<div id="main">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container">
+					<div id="banner">
+						<a href="/"><img src="{% static "seal.gif" %}" alt="seal" id="seal"/></a>
+						<h1>Stanford Classifieds</h1>
+						<ul class="nav">
+							<li><a href="/">Home</a></li>
+							<li><a href="/bikes">Bikes</a></li>
+							<li><a href="/textbooks">Textbooks</a></li>
+							<li><a href="/post">Post Ad</a></li>
+							<li><a href="/saved">Saved</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+		<div id="welcome">
+			<h2>Welcome to Stanford Classifieds.</h2>
+			<h3>Click a link above to get started.</h3>
+		</div>
+		<div id="slideshow">
+			<img class="slide1" src="{% static "stanford1.jpg" %}" alt="photo"/>
+			<img class="slide1" src="{% static "stanford2.jpg" %}" alt="photo"/>
+			<img class="slide1" src="{% static "stanford3.jpg" %}" alt="photo"/>
+			<img class="slide1" src="{% static "stanford4.jpg" %}" alt="photo"/>
+			<img class="slide1" src="{% static "stanford5.jpg" %}" alt="photo"/>
+		</div>
+	</div>
+</div>
+<script src=" {% static "jquery-1.7.2.js" %}"></script>
+<script src=" {% static "cycle.js" %}"></script>
+<script>
+$('#slideshow').cycle({ 
+    fx: 'fade', 
+    speed: 2500
+});
+adObj1 = new Object();
+adObj2 = new Object();
+adObj101 = new Object();
+adObj102 = new Object();
+
+adObj1.type = "Textbook";
+adObj1.titleText = "Used Chemistry Book, like new! For CHEM 33 and 35";
+adObj1.description = "Textbook for Chem 33 and 35, great condition, cover slightly scuffed.  Cost $120 new; selling for $80. Contact chemlover@gmail.com if interested.";
+adObj1.price = 80;
+adObj1.date = "8/11/12";
+adObj1.image = "http://images.betterworldbooks.com/039/9780393935004.jpg";
+
+adObj2.type = "Textbook";
+adObj2.titleText = "Chemistry Book, brand new! For CHEM 33 and 35";
+adObj2.description = "Textbook for Chem 33 and 35, brand new. Only $20, very cheap. Contact chemist@gmail.com if interested.";
+adObj2.price = 80;
+adObj2.date = "8/13/12";
+adObj2.image = "http://images.betterworldbooks.com/039/9780393935004.jpg";
+
+adObj101.type = "Bike";
+adObj101.titleText = "Brand new Schwinn beach cruiser, mint condition! Don't miss out on this amazing opportunity!";
+adObj101.description = "This bike has never been ridden and has been in storage for several years. Cost $300 new; selling for $230. Contact bikelover@gmail.com if interested.";
+adObj101.price = 230;
+adObj101.date = "8/12/12";
+adObj101.image = "http://www.gondolajoe.com/wp-content/uploads/2009/10/gondola-bike-001-300x225.jpg";
+
+adObj102.type = "Bike";
+adObj102.titleText = "Old Schwinn cruiser; needs repair but still rideable.";
+adObj102.description = "This bike is 10 years old and in need of some TLC. Very cheap, however. Contact biker@gmail.com if interested.";
+adObj102.price = 15;
+adObj102.date = "8/10/12";
+adObj102.image = "http://www.gondolajoe.com/wp-content/uploads/2009/10/gondola-bike-001-300x225.jpg";
+
+if (!localStorage.getItem('textInd') && !localStorage.getItem('bikeInd') && !localStorage.getItem('savedArr')) {
+	localStorage.setItem('1', JSON.stringify(adObj1));
+	localStorage.setItem('101', JSON.stringify(adObj101));
+	localStorage.setItem('2', JSON.stringify(adObj2));
+	localStorage.setItem('102', JSON.stringify(adObj102));
+	localStorage.setItem('textInd', 2);
+	localStorage.setItem('bikeInd', 102);
+}
+</script>
+</body>
+</html>

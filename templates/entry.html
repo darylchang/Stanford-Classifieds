@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "bootstrap.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "title.css" %}" />
+<style>
+#ad {clear: both;
+	 margin: 20px;}
+#titleText {font-weight: bold}
+</style>
+</head>
+<body>
+<div id="main">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container">
+					<div id="banner">
+						<a href="/"><img src="{% static "seal.gif" %}" alt="seal" id="seal"/></a>
+						<h1>Stanford Classifieds</h1>
+						<ul class="nav">
+							<li><a href="/">Home</a></li>
+							<li><a href="/bikes">Bikes</a></li>
+							<li><a href="/textbooks">Textbooks</a></li>
+							<li><a href="/post">Post Ad</a></li>
+							<li><a href="/saved">Saved</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+		<h2>{{ad.type}} Ad</h2>
+		<div id="titleText">Title: {{ad.title}}</div>
+		<div id="description">Description: {{ad.description}}</div><br />
+		<div id="price">Price: ${{ad.price}}</div>
+		<div id="date">Date posted: {{ad.date}}</div><br />
+		<div id="image"><img src= {{ad.image_url}} alt="pic"></div>
+		<form action="/saved_true/{{ad.id}}/" method="post">
+			{% csrf_token %}
+			<input type ="submit" VALUE = "Save Ad" onclick="alert('Ad saved!');">
+		</form>
+		<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+	</div>
+</div>
+<script>
+	/*var num = 1;
+	window.onload = function (){
+		var adObj = JSON.parse(localStorage.getItem(num));
+		document.getElementById("titleText").innerHTML += adObj.titleText;
+		document.getElementById("description").innerHTML += adObj.description;
+		document.getElementById("price").innerHTML += adObj.price;
+		document.getElementById("date").innerHTML += adObj.date;
+		if (adObj.image != "")
+			document.getElementById("image").innerHTML += "<img src=\"" + adObj.image + "\" alt=\"image\"/>";
+	}
+	
+	function back() {
+		window.location = "textbooks.html";
+	}
+	
+	function saveAd() {
+		var savedArr = JSON.parse(localStorage.getItem("savedArr"));
+		if (!savedArr) {
+			var newArr = new Array();
+			newArr[0] = num;
+			localStorage.setItem('savedArr', JSON.stringify(newArr));
+		} else if (savedArr.indexOf(num) == -1){
+			savedArr.push(num);
+			localStorage.setItem('savedArr', JSON.stringify(savedArr));
+		}
+	}*/
+</script>
+</body>
+</html>
