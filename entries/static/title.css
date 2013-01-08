@@ -1,0 +1,19 @@
+#seal {float: left;
+	   width: 100px;
+	   height: 100px;}
+#banner {height: 100px;
+		float: left;}
+h1 {float: left;
+   margin-top: 35px;
+   color: white;}
+#content {position: relative;
+		  top: 100px;
+		  margin: 20px;}
+li {color: white;
+	font-size: 16pt;
+	position: relative;
+	top: 35px;
+	left: 20px;}
+#main {width: 800px;}
+#post {float:right;}
+#back {float:right;}
