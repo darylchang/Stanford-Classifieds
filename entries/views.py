@@ -30,7 +30,7 @@ def posted(request):
 	ad = Ad(type=request.POST['type'], title=request.POST['title'], description = request.POST['description'], price=request.POST['price'], date=request.POST['date'], image_url=request.POST['image'], saved=False)
 	ad.save()
 	if ad.type='Bike':
-    	return render_to_response('bikes.html')
+    	return render_to_response('bikes.html', {})
 	else if ad.type='Textbook':
 		return render_to_response('textbooks.html', {})
 
