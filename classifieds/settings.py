@@ -111,8 +111,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
 )
 
+import os.path
+PROJECT_DIR = os.path.dirname(__file__)
 TEMPLATE_DIRS = (
-    "/Users/darylchang/djangoDir/classifieds/templates",
+	os.path.join(PROJECT_DIR, "templates"),
 )
 
 INSTALLED_APPS = (
