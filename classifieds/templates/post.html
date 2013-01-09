@@ -51,7 +51,7 @@
 			
 			Image URL: <input type="text" name = "image" id="image"/><br />
 			
-			<input type="submit" class="btn" value="Submit Ad"> 
+			<input type="submit" class="btn" value="Submit Ad" onclick="submit();"> 
 
 			<input type="button" class="btn" value="Clear all" onclick="clearAll();">
 		</form>
@@ -84,29 +84,7 @@ function submit() {
 	adObj.image = document.getElementById("image").value;
 	
 	if (adObj.titleText && adObj.description && adObj.price && adObj.date) {
-		var type = document.getElementById("type").value;
-		if (type == "Bike") {
-			var bikeInd = localStorage.getItem('bikeInd');
-			if (!bikeInd) {
-				localStorage.setItem('bikeInd', 101);
-				localStorage.setItem('101', JSON.stringify(adObj));
-			} else {
-				localStorage.setItem('bikeInd', parseInt(bikeInd)+1);
-				localStorage.setItem(parseInt(bikeInd)+1, JSON.stringify(adObj));
-			}
 			alert("Thank you for submitting your ad.  You will now be redirected to the bikes page.");
-			window.location = "bikes.html";
-		} else if (type == "Textbook") {
-			var textInd = localStorage.getItem('textInd');
-			if (!textInd) {
-				localStorage.setItem('textInd', 1);
-				localStorage.setItem('1', JSON.stringify(adObj));
-			} else {
-				localStorage.setItem('textInd', parseInt(textInd)+1);
-				localStorage.setItem(parseInt(textInd)+1, JSON.stringify(adObj));
-			}
-			alert("Thank you for submitting your ad.  You will now be redirected to the textbooks page.");
-			window.location = "textbooks.html";
 		}
 	} else {
 		alert("Please enter all required information.");

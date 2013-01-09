@@ -65,47 +65,6 @@ $('#slideshow').cycle({
     fx: 'fade', 
     speed: 2500
 });
-adObj1 = new Object();
-adObj2 = new Object();
-adObj101 = new Object();
-adObj102 = new Object();
-
-adObj1.type = "Textbook";
-adObj1.titleText = "Used Chemistry Book, like new! For CHEM 33 and 35";
-adObj1.description = "Textbook for Chem 33 and 35, great condition, cover slightly scuffed.  Cost $120 new; selling for $80. Contact chemlover@gmail.com if interested.";
-adObj1.price = 80;
-adObj1.date = "8/11/12";
-adObj1.image = "http://images.betterworldbooks.com/039/9780393935004.jpg";
-
-adObj2.type = "Textbook";
-adObj2.titleText = "Chemistry Book, brand new! For CHEM 33 and 35";
-adObj2.description = "Textbook for Chem 33 and 35, brand new. Only $20, very cheap. Contact chemist@gmail.com if interested.";
-adObj2.price = 80;
-adObj2.date = "8/13/12";
-adObj2.image = "http://images.betterworldbooks.com/039/9780393935004.jpg";
-
-adObj101.type = "Bike";
-adObj101.titleText = "Brand new Schwinn beach cruiser, mint condition! Don't miss out on this amazing opportunity!";
-adObj101.description = "This bike has never been ridden and has been in storage for several years. Cost $300 new; selling for $230. Contact bikelover@gmail.com if interested.";
-adObj101.price = 230;
-adObj101.date = "8/12/12";
-adObj101.image = "http://www.gondolajoe.com/wp-content/uploads/2009/10/gondola-bike-001-300x225.jpg";
-
-adObj102.type = "Bike";
-adObj102.titleText = "Old Schwinn cruiser; needs repair but still rideable.";
-adObj102.description = "This bike is 10 years old and in need of some TLC. Very cheap, however. Contact biker@gmail.com if interested.";
-adObj102.price = 15;
-adObj102.date = "8/10/12";
-adObj102.image = "http://www.gondolajoe.com/wp-content/uploads/2009/10/gondola-bike-001-300x225.jpg";
-
-if (!localStorage.getItem('textInd') && !localStorage.getItem('bikeInd') && !localStorage.getItem('savedArr')) {
-	localStorage.setItem('1', JSON.stringify(adObj1));
-	localStorage.setItem('101', JSON.stringify(adObj101));
-	localStorage.setItem('2', JSON.stringify(adObj2));
-	localStorage.setItem('102', JSON.stringify(adObj102));
-	localStorage.setItem('textInd', 2);
-	localStorage.setItem('bikeInd', 102);
-}
 </script>
 </body>
 </html>
