@@ -29,7 +29,10 @@ def saved_true(request, ad_id):
 def posted(request):
 	ad = Ad(type=request.POST['type'], title=request.POST['title'], description = request.POST['description'], price=request.POST['price'], date=request.POST['date'], image_url=request.POST['image'], saved=False)
 	ad.save()
-	return render_to_response('textbooks.html', {})
+	if(ad.type='Bike')
+    	return render_to_response('bikes.html')
+	else if(ad.type='Textbook')
+		return render_to_response('textbooks.html', {})
 
 def textbooks(request):
 	textbook_list = Ad.objects.filter(type='Textbook')
